@@ -15,11 +15,11 @@ const TabButtonDivText = (props : TBDTProps) => {
         <div>
             <button onClick = {() => onClick()}>Block 1</button>
             <button onClick = {() => onClick()}>Block 2</button>
-            <div key = {'block1'} style = {textParentStyle()}>
-                <div key = 'smallblock1' style = {textStyle()}></div>
-                <div key = 'smallblock1' style = {textStyle()}></div>
+            <div key = {'block1'} style = {blockStyle()}>
             </div>
-            <div key = {'block2'} style = {blockStyle()}>
+            <div key = {'block2'} style = {textParentStyle()}>
+                <div key = 'smallblock1' style = {textStyle()}>Hello Block 1 </div>
+                <div key = 'smallblock1' style = {textStyle()}>Hello Block 2</div>
             </div>
         </div>
     )

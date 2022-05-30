@@ -1,6 +1,6 @@
 import React, {useState, useEffect, Dispatch, CSSProperties} from 'react'
 
-const delay : number = 20 
+const delay : number = 10 
 const scGap : number = 0.01
 export const useAnimatedScale = () => {
     const [scale, setScale]  = useState(0)
@@ -63,13 +63,19 @@ export const useStyle = (w : number, h : number, scale : number) => {
                 top,
                 left, 
                 width, 
-                height 
+                height,
+                background,
+                zIndex: 1
             }
         },
         textStyle() : CSSProperties {
             return {
                 color, 
-                fontSize: `24px`
+                fontSize: `24px`,
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                zIndex: 20
             }
         },
 
@@ -77,8 +83,9 @@ export const useStyle = (w : number, h : number, scale : number) => {
             return {
                 display: 'flex',
                 justifyContent: 'space-between',
-                width: `${size}px`,
-                height: `${size}px`
+                height: `${size}px`,
+                width: `100%`,
+                zIndex: 10
             }
         }
     }
