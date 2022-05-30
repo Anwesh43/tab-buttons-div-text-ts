@@ -1,4 +1,4 @@
-import React, {useState, useEffect, Dispatch} from 'react'
+import React, {useState, useEffect, Dispatch, CSSProperties} from 'react'
 
 const delay : number = 20 
 const scGap : number = 0.01
@@ -37,12 +37,49 @@ export const useDimension = () => {
         }
         return () => {
             window.onresize = () => {
-                
+
             }
         }
     }, [])
     return {
         w, 
         h
+    }
+}
+
+export const useStyle = (w : number, h : number, scale : number) => {
+    const background : string  = 'green'
+    const color : string = "white"
+    const position : 'absolute' | 'relative' | 'fixed' = 'absolute'
+    const size = Math.min(w, h) / 5
+    return {
+        blockStyle() : CSSProperties {
+            const top = `0px`
+            const width = `${size}px`
+            const height = `${size}px`
+            const left = `${(w - size) * scale}px`
+            return {
+                position,
+                top,
+                left, 
+                width, 
+                height 
+            }
+        },
+        textStyle() : CSSProperties {
+            return {
+                color, 
+                fontSize: `24px`
+            }
+        },
+
+        textParentStyle() : CSSProperties {
+            return {
+                display: 'flex',
+                justifyContent: 'space-between',
+                width: `${size}px`,
+                height: `${size}px`
+            }
+        }
     }
 }
